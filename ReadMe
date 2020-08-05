@@ -1,0 +1,33 @@
+Customer Application
+
+Technology Stack:
+- Springboot
+- H2 in memory database
+- Caffeine for cache
+- Swagger for documentation
+
+
+General Notes:
+I used H2 database so that application can be run without configuration changes.
+There is a class named ControllerExceptionHandlerAdvice to handle exceptions and return valid information to clients. In this class errors were logged as well.
+Request, response values and request time measures can be seen from Swagger documentation.
+"Get customers by city" request's response is cached; and cache is evicted when there is a customer or address change.
+SQL queries were used for search. I could use Elastic search for these methods; but I wanted to keep application simple and easy to run without configuration changes.
+Unit and integration tests can be found under test folder.
+
+
+How to use application as a user?
+
+- Initial data is loaded using data.sql.
+- Url below can be used to access application.
+  http://localhost:8080/swagger-ui.html#/
+
+
+How to run the app?
+
+It can be run as a spring-boot application from Intellij Idea.
+It can be run with the mvn command below.
+mvn spring-boot:run
+
+H2 database console can be accessed from the url below.
+http://localhost:8080/h2/
